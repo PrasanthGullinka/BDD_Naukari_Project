@@ -1,0 +1,7 @@
+package com.naukari.POM;
+
+public class LoginPage {
+	
+	@FindBy(id='login_Layer') WebElement Loginbtn
+
+}

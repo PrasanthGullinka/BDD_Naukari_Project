@@ -1,0 +1,17 @@
+Feature: Skills Updated in Naukari
+
+Scenario: Login to Naukri app and update skills
+  Given User navigates to the login page
+  When User clicks on the login button on the homepage
+  And User enters the username and password
+  And User clicks on the Login button
+  Then User should be logged in successfully
+  And User clicks on the User Profile button
+  And User should land on the resume page
+  And User clicks on the skills edit button
+  #Then User should see the skills page
+  And User clicks on Save button
+ Then User should see 'Key Skills have been successfully saved' message
+  And User clicks on More options
+  And User clicks on Logout button
+  Then User should be logged out successfully

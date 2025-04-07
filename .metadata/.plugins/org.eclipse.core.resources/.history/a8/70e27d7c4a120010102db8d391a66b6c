@@ -1,0 +1,35 @@
+feature: Login for naukari app and update resume
+
+
+Scenario: Login to Naukri app and update resume
+  Given User navigates to the login page
+  When User clicks on the login button on the homepage
+  And User enters the username "sivaprashanth272@gmail.com"
+  And User enters the password "Prassu@123"
+  And User clicks on the Login button
+  Then User should be logged in successfully
+  And User clicks on the User Profile button
+  And User should land on the resume page
+  And User clicks on the update resume button
+  And User selects resume file from "./Prasanth_Resume.pdf"
+  Then User should see resume updated with today’s date
+  And User clicks on More options
+  And User clicks on Logout button
+  Then User should be logged out successfully
+
+Scenario: Login to Naukri app and update skills
+  Given User navigates to the login page
+  When User clicks on the login button on the homepage
+  And User enters the username "sivaprashanth272@gmail.com"
+  And User enters the password "Prassu@123"
+  And User clicks on the Login button
+  Then User should be logged in successfully
+  And User clicks on the User Profile button
+  And User should land on the resume page
+  And User clicks on the skills edit button
+  Then User should see the skills page
+  And User clicks on Save button
+  Then User should see "Skills updated successfully" message
+  And User clicks on More options
+  And User clicks on Logout button
+  Then User should be logged out successfully

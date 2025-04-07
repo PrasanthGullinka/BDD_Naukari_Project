@@ -1,0 +1,52 @@
+package com.naukari.POM;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import Utility_Common.ConfiqReader;
+
+public class LoginPage extends BasePage{
+		
+	
+	public LoginPage(WebDriver driver) {
+		super(driver);
+		
+	}
+
+	@FindBy(className="qsb-title") WebElement HomePage;
+	 
+	@FindBy(id="login_Layer") WebElement HomeLoginbtn;
+	
+	@FindBy(xpath="//input[@placeholder='Enter your active Email ID / Username']") WebElement UsernameField;
+	
+	@FindBy(xpath="//input[@placeholder='Enter your password']") WebElement PasswordField;
+	
+	@FindBy(xpath="//*[@class='btn-primary loginButton']") WebElement Loginbtn;
+	
+	
+	
+	
+	public boolean HomePageAppear() {
+	return HomePage.isDisplayed();	
+	}
+	
+	public void Clickloginhomebtn() {
+		WebElement btn=	waitForVisibility(HomeLoginbtn,5);
+		if(btn!=null)
+		HomeLoginbtn.click();
+	}
+	
+	public void EnterUsername_Password() {
+		String username = ConfiqReader.getProperty("username");
+	    String password = ConfiqReader.getProperty("password");
+		UsernameField.sendKeys(username);
+		PasswordField.sendKeys(password);
+	}
+	
+	public void ClickLoginbtnwithWait() {
+	WebElement btn=	waitForVisibility(Loginbtn,5);
+		if(btn!=null)
+		Loginbtn.click();
+	}
+
+}

@@ -1,0 +1,188 @@
+package com.naukari.POM;
+
+import java.io.File;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ResumeUpdatePage extends BasePage {
+
+    public ResumeUpdatePage(WebDriver driver) {
+        super(driver);
+    }
+
+    // WebElements
+    @FindBy(xpath = "//*[@class='s12 typ-16Bold']")
+    private WebElement resumeUpdateText;
+
+    @FindBy(xpath = "//*[@class='dummyUpload typ-14Bold']")
+    private WebElement resumeButton;
+
+    @FindBy(id = "attachCV")
+    private WebElement uploadButton;
+
+    @FindBy(xpath = "//span[@class='typ-14Regular mode-date-wrap desg-avail']")
+    private WebElement resumeText;
+
+    @FindBy(xpath = "//*[@class='typ-14Medium mod-date-val']")
+    private WebElement todayText;
+
+    @FindBy(xpath = "//div[@class='nI-gNb-drawer']")
+    private WebElement moreOptionsButton;
+
+    @FindBy(xpath = "//a[@title='Logout']")
+    private WebElement logoutButton;
+
+    @FindBy(xpath = "(//span[@class='edit icon'])[2]")
+    private WebElement editSkillButton;
+
+    @FindBy(xpath = "//div[contains(text(),'Add skills that best define your expertise,')]")
+    private WebElement skillsInfoText;
+
+    @FindBy(id = "saveKeySkills")
+    private WebElement saveSkillsButton;
+
+    @FindBy(xpath = "(//p[@class='msg'])[1]")
+    private WebElement successMessage;
+
+    // Methods
+    public boolean isResumeUpdateTextVisible() {
+        return IsDisplayedElement(resumeUpdateText);
+    }
+
+    public void clickResumeButton() {
+        resumeButton.click();
+    }
+
+    public void uploadResume(String resumeFileName) {
+        String resumePath = System.getProperty("user.dir")
+                + File.separator + "resource_Files"
+                + File.separator + resumeFileName;
+
+        if (waitForVisibility(uploadButton, 5) != null) {
+            uploadButton.sendKeys(resumePath);
+        }
+    }
+
+    public String ResumeDetails() {
+        return getMessageText(resumeText);
+    }
+
+    public String getSuccessMessage() {
+        return getMessageText(successMessage);
+    }
+
+    public void ClickmoreOption() {
+        if (waitForVisibility(moreOptionsButton, 5) != null) {
+            moreOptionsButton.click();
+        }
+    }
+
+    public void ClickLogout() {
+        if (waitForVisibility(logoutButton, 5) != null) {
+            logoutButton.click();
+        }
+    }
+
+    public void clickEditSkillsButton() throws InterruptedException {
+        if (waitForVisibility(editSkillButton, 5) != null) {
+            editSkillButton.click();
+            Thread.sleep(10);
+        }
+    }
+
+    public boolean isSkillsSectionVisible() {
+    	
+        return IsDisplayedElement(skillsInfoText);
+    }
+
+    public void clickSaveSkillsButton() {
+        saveSkillsButton.click();
+    }
+}
+
+//package com.naukari.POM;
+//
+//import java.io.File;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.support.FindBy;
+//
+//public class ResumeUpdatePage extends BasePage{
+//
+//	public ResumeUpdatePage(WebDriver driver) {
+//		super(driver);
+//	}
+//
+//	@FindBy(xpath="//*[@class='s12 typ-16Bold']") WebElement ResumeUpdatetext;
+//
+//	@FindBy(xpath="//*[@class='dummyUpload typ-14Bold']") WebElement ResumeBtn;
+//
+//	@FindBy(id="attachCV") WebElement Uploadbtn;
+//
+//	@FindBy(xpath="//span[@class='typ-14Regular mode-date-wrap desg-avail']") WebElement Resumetext;
+//
+//	@FindBy(xpath="//*[@class='typ-14Medium mod-date-val']") WebElement todaytext;
+//
+//	@FindBy(xpath="//div[@class='nI-gNb-drawer']") WebElement moreOptionsbtn;
+//
+//	@FindBy(xpath="//a[@title='Logout']") WebElement Logoutbtn; 
+//
+//	@FindBy(xpath="//span[@class='widgetTitle']/following-sibling::span") WebElement EditSkillbtn;
+//
+//	@FindBy(xpath="//div[contains(text(),'Add skills that best define your expertise,')]") WebElement SkillsDisplayed;
+//
+//	@FindBy(id="saveKeySkills") WebElement SkillsSavebtn;
+//
+//	@FindBy(xpath = "(//p[@class='msg'])[1]")
+//	WebElement successMessage;
+//
+//	public String verifySuccessMessage() {
+//		return getMessageText(successMessage);
+//	}
+//
+//	public boolean ResumeUpdateAppear() {
+//		return IsDisplayedElement(ResumeUpdatetext);
+//
+//	}
+//
+//	public void ClickResume() {
+//		ResumeBtn.click();
+//	}
+//	public void UploadResume(String resumefilepath) {
+//		//waitForVisibility(Uploadbtn,5);
+//		//ResumeBtn.click();
+//		String resumepath=System.getProperty("user.dir")+File.separator+"resource_Files"+File.separator+resumefilepath;
+//
+//		waitForVisibility(Uploadbtn,5);
+//		Uploadbtn.sendKeys(resumepath);
+//
+//	}
+//	public String ResumeDetails() {
+//		getMessageText(Resumetext);
+//		String firstdata= Resumetext.getText();
+//		//String seconddata=todaytext.getText();
+//		//String concatString=firstdata;
+//		return firstdata;
+//	}
+//	public void ClickmoreOption() {
+//		waitForVisibility(moreOptionsbtn,5);
+//		moreOptionsbtn.click();	
+//	}
+//	public void ClickLogout() {
+//		waitForVisibility(Logoutbtn,5);
+//		Logoutbtn.click();
+//	}
+//
+//	public void ClickSkillbtn() {
+//		waitForVisibility(EditSkillbtn,5);
+//		EditSkillbtn.click();
+//	}
+//	public boolean SkillsDisplayed() {
+//		return SkillsDisplayed.isDisplayed();
+//	}
+//	public void ClickSkillsSave() {
+//		SkillsSavebtn.click();
+//	}
+//}

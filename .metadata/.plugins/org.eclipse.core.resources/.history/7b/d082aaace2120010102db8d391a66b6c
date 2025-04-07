@@ -1,0 +1,44 @@
+package com.naukari.POM;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class LoginPage extends BasePage{
+		
+	
+	public LoginPage(WebDriver driver) {
+		super(driver);
+		
+	}
+
+	@FindBy(className="qsb-title") WebElement HomePage;
+	 
+	@FindBy(id="login_Layer") WebElement HomeLoginbtn;
+	
+	@FindBy(xpath="//input[@placeholder='Enter your active Email ID / Username']") WebElement UsernameField;
+	
+	@FindBy(xpath="//input[@placeholder='Enter your password']") WebElement PasswordField;
+	
+	@FindBy(xpath="//*[@class='btn-primary loginButton']") WebElement Loginbtn;
+	
+	
+	
+	
+	public boolean HomePageAppear() {
+	return HomePage.isDisplayed();	
+	}
+	
+	public void Clickloginhomebtn() {
+		HomeLoginbtn.click();
+	}
+	
+	public void EnterUsername_Password(String username,String password) {
+		UsernameField.sendKeys();
+		PasswordField.sendKeys();
+	}
+	
+	public void ClickLoginbtn() {
+		Loginbtn.click();
+	}
+
+}

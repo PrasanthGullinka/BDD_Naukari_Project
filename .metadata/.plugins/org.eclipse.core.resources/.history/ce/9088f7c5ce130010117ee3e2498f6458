@@ -1,0 +1,53 @@
+package com.naukari.stepDefination;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import com.naukari.POM.ResumeUpdatePage;
+
+import io.cucumber.java.en.*;
+
+public class TC_Skills_Updated_Step {
+	
+		WebDriver driver;
+	
+	ResumeUpdatePage resume=new ResumeUpdatePage(driver);
+	 
+	 @And("User clicks on the skills edit button")
+	 public void ClickEditSkills()   {
+		
+		 resume.clickEditSkillsButton();
+		
+	 }
+	  @Then ("User should see the skills page")
+	  public void SkillPopupAppear() {
+		 
+		  Assert.assertTrue(resume.isSkillsSectionVisible());
+			System.out.println("SkillPopupAppear methos it is ");
+	  }
+	  @And ("User clicks on Save button")
+	  public void ClickSave() {
+		  resume.clickSaveSkillsButton();
+	  }
+	  @Then ("User should see 'Key Skills have been successfully saved' message")
+	  public void SkillsUpdatedMsg() {
+		  String msg = resume.getSuccessMessage();
+		  Assert.assertNotNull(msg,"Success message is null or not displayed.");
+		  Assert.assertTrue(msg.contains("Key Skills have been successfully saved"));
+	  }
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

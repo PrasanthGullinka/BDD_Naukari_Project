@@ -1,0 +1,28 @@
+package com.naukari.POM;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ProfilePage extends BasePage{
+	
+	public ProfilePage(WebDriver driver) {
+		super(driver);
+		
+	}
+	
+	@FindBy(xpath="//div[@title='Prasanth Gullinka']") WebElement ProfilePage;
+	
+	@FindBy(xpath="//div[normalize-space()='View profile']/a") WebElement ViewProfilebtn;
+
+	public boolean ProfilePageAppear() {
+		return IsDisplayedElement(ProfilePage);
+	
+	}
+	
+	public void ClickViewProfile() {
+		ViewProfilebtn.click();
+	}
+	
+	
+}

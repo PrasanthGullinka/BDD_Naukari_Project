@@ -1,0 +1,115 @@
+package com.naukari.POM;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import Utility_Common.ConfiqReader;
+
+public class LoginPage extends BasePage {
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
+    // WebElements
+    @FindBy(className = "qsb-title")
+    private WebElement homePage;
+
+    @FindBy(id = "login_Layer")
+    private WebElement homeLoginBtn;
+
+    @FindBy(xpath = "//label[text()='Email ID / Username']//following-sibling::input")
+    private WebElement usernameField;
+
+    @FindBy(xpath = "//input[@type='password']")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//*[@class='btn-primary loginButton']")
+    private WebElement loginBtn;
+
+    // Methods
+
+    public boolean isHomePageVisible() {
+        return isDisplayedElement(homePage);
+    }
+
+    public void clickHomeLoginButton() {
+        if (waitForVisibility(homeLoginBtn, 5) != null) {
+            homeLoginBtn.click();
+        }
+    }
+
+    public void enterUsernameAndPassword() {
+        String username = ConfiqReader.getProperty("username");
+        String password = ConfiqReader.getProperty("password");
+
+        if (waitForVisibility(usernameField, 5) != null) {
+            usernameField.sendKeys(username);
+            passwordField.sendKeys(password);
+        }
+    }
+
+    public void clickLoginButton() {
+        if (waitForVisibility(loginBtn, 5) != null) {
+            loginBtn.click();
+        }
+    }
+}
+
+
+
+//package com.naukari.POM;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.support.FindBy;
+//
+//import Utility_Common.ConfiqReader;
+//
+//public class LoginPage extends BasePage{
+//		
+//	
+//	public LoginPage(WebDriver driver) {
+//		super(driver);
+//		
+//	}
+//
+//	@FindBy(className="qsb-title") WebElement HomePage;
+//	 
+//	@FindBy(id="login_Layer") WebElement HomeLoginbtn;
+//	
+//	@FindBy(xpath="//label[text()='Email ID / Username']//following-sibling::input") WebElement UsernameField;
+//	
+//	@FindBy(xpath="//input[@type='password']") WebElement PasswordField;
+//	
+//	@FindBy(xpath="//*[@class='btn-primary loginButton']") WebElement Loginbtn;
+//	
+//	
+//	
+//	
+//	public boolean HomePageAppear() {
+//	return HomePage.isDisplayed();	
+//	}
+//	
+//	public void Clickloginhomebtn() {
+//		WebElement btn=	waitForVisibility(HomeLoginbtn,5);
+//		if(btn!=null)
+//		HomeLoginbtn.click();
+//	
+//	}
+//	
+//	public void EnterUsername_Password() {
+//		String username = ConfiqReader.getProperty("username");
+//	    String password = ConfiqReader.getProperty("password");
+//	    WebElement btn=	waitForVisibility(UsernameField,5);
+//		if(btn!=null)
+//		UsernameField.sendKeys(username);
+//		PasswordField.sendKeys(password);
+//	}
+//	
+//	public void ClickLoginbtnwithWait() {
+//	WebElement btn=	waitForVisibility(Loginbtn,5);
+//		if(btn!=null)
+//		Loginbtn.click();
+//	}
+//
+//}

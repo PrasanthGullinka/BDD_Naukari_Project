@@ -1,0 +1,78 @@
+package com.naukari.stepDefination;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import com.naukari.POM.LoginPage;
+import com.naukari.POM.ProfilePage;
+import com.naukari.POM.ResumeUpdatePage;
+
+import io.cucumber.java.en.*;
+
+public class LoginStep {
+
+	
+
+	WebDriver driver=new ChromeDriver();
+	 LoginPage login=new LoginPage(driver);
+	 ProfilePage profile=new ProfilePage(driver);
+	 ResumeUpdatePage resume=new ResumeUpdatePage(driver);
+	 
+	@Given("User navigates to the login page")
+	public void loginpage() {
+		 
+		Assert.assertTrue(login.HomePageAppear());	 
+	}
+	
+	  @When("User clicks on the login button on the homepage")
+	  public void ClickLoginBtn() {
+		  login.Clickloginhomebtn();	
+	  }
+	  @And("User enters the username and password")
+	  public void Enter_Username_Password() {
+		  String username = ConfigReader.getProperty("username");
+		    String password = ConfigReader.getProperty("password");
+	  }
+	  
+	  @And ("User clicks on the Login button")
+	  public void ClickLogin() {
+		  login.ClickLoginbtn();
+	  }
+	  @Then ("User should be logged in successfully")
+	  public void ProfilePageAppear() {
+		 Assert.assertTrue( profile.ProfilePageAppear());
+	  }
+	  
+	  @And("User clicks on the User Profile button")
+	  public void ClickingProfile() {
+		  profile.ClickViewProfile();
+	  }
+	  @And("User should land on the resume page")
+	  public void ResumeUpdatePageAppear() {
+		 Assert.assertTrue(resume.ResumeUpdateAppear());
+	  }
+	  
+	  @And ("User clicks on the update resume button and upload resume {string}")
+	  public void UpdateResume() {
+		  resume.UploadResume("Prasanth_Resume.pdf");
+	  }
+	 @Then ("User should see resume updated with today’s date")
+	 public void ResumeUpdatedDetails() {
+		String Actualdata = resume.ResumeDetails();
+		 Assert.assertEquals(Actualdata,"Profile last updated - Today","Resume not uploaded successfully!");
+	 }
+	  @And ("User clicks on More options")
+	  public void ClickMoreOptions() {
+		  resume.ClickmoreOption();
+	  }
+	  @And ("User clicks on Logout button")
+	  public void ClickLogout() {
+	  resume.ClickLogout();
+	  }
+	  @Then ("User should be logged out successfully")
+	  public void Userloggedout() {
+		  loginpage();
+	  }
+	
+}

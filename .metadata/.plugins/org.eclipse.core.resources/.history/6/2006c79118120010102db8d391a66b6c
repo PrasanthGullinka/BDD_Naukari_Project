@@ -1,0 +1,8 @@
+package com.naukari.POM;
+import org.openqa.selenium.support.FindBy;
+
+public class LoginPage {
+	
+	@FindBy(id='login_Layer') WebElement Loginbtn
+
+}

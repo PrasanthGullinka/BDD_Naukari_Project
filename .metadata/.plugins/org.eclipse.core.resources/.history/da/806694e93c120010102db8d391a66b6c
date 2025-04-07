@@ -1,0 +1,31 @@
+package com.naukari.Runner;
+
+
+
+@CucumberOptions=(
+		features="src/test/java/features",
+		glue="src/tes/java/stepDefinations",
+		plugin={"pretty","html:target/cucumber-reports/report.html"}
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		)
+
+
+
+
+
+
+
+
+
+
+public class TestRunner {
+
+}

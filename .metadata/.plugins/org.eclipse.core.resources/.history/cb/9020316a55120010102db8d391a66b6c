@@ -1,0 +1,72 @@
+package com.naukari.POM;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ResumeUpdatePage extends BasePage{
+	
+	public ResumeUpdatePage(WebDriver driver) {
+		super(driver);
+	}
+
+	@FindBy(className="s12 typ-16Bold") WebElement ResumeUpdatetext;
+	
+	@FindBy(className="dummyUpload typ-14Bold") WebElement ResumeBtn;
+	
+	@FindBy(id="attachCV") WebElement Uploadbtn;
+	
+	@FindBy(xpath="//span[@class='typ-14Regular mode-date-wrap desg-avail']") WebElement Resumetext;
+	
+	@FindBy(className="typ-14Medium mod-date-val") WebElement todaytext;
+	
+	@FindBy(xpath="nI-gNb-drawer") WebElement moreOptionsbtn;
+	
+	@FindBy(xpath="//a[@title='Logout']") WebElement Logoutbtn; 
+	
+	@FindBy(xpath="/span[@class='widgetTitle']/following-sibling::span") WebElement EditSkillbtn;
+	
+	@FindBy(xpath="//div[contains(text(),'Add skills that best define your expertise,')]") WebElement SkillsDisplayed;
+	
+	@FindBy(id="saveKeySkills") WebElement SkillsSavebtn;
+	
+	@FindBy(xpath = "(//p[@class='msg'])[1]")
+	WebElement successMessage;
+
+	public String verifySuccessMessage() {
+	    return successMessage.getText();
+	}
+	
+	public boolean ResumeUpdateAppear() {
+		return ResumeUpdatetext.isDisplayed();
+	}
+	
+	public void ClickResume() {
+		ResumeBtn.click();
+	}
+	public void UploadResume(String resumefilepath) {
+		String resumepath=System.getProperty("user.dir"+"/"+resumefilepath);
+		Uploadbtn.sendKeys(resumepath);
+	}
+	public String ResumeDetails() {
+		String firstdata= Resumetext.getText();
+		String seconddata=todaytext.getText();
+		return firstdata+seconddata;
+	}
+	public void ClickmoreOption() {
+	moreOptionsbtn.click();	
+	}
+	public void ClickLogout() {
+		Logoutbtn.click();
+	}
+	
+	public void ClickSkillbtn() {
+		EditSkillbtn.click();
+	}
+	public boolean SkillsDisplayed() {
+		return SkillsDisplayed.isDisplayed();
+	}
+	public void ClickSkillsSave() {
+		SkillsSavebtn.click();
+}
+}

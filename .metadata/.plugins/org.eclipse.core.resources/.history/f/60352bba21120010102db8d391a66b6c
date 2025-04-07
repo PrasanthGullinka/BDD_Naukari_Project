@@ -1,0 +1,63 @@
+package com.naukari.stepDefination;
+
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.naukari.POM.LoginPage;
+import com.naukari.POM.ProfilePage;
+
+import io.cucumber.java.en.*;
+
+public class LoginStep {
+
+	
+
+	WebDriver driver=new ChromeDriver();
+	 LoginPage login=new LoginPage(driver);
+	 ProfilePage profile=new ProfilePage(driver);
+	 ResumeUpdatePage resume=new ResumeUpdatePage(driver);
+	 
+	@Given("User navigates to the login page")
+	public void loginpage() {
+		 
+		 login.HomePageAppear();	 
+	}
+	
+	  @When("User clicks on the login button on the homepage")
+	  public void ClickLoginBtn() {
+		  login.Clickloginhomebtn();	
+	  }
+	  @And("User enters the username {String} and password {String}")
+	  public void Enter_Username_Password() {
+		  login.EnterUsername_Password("sivaprashanth272@gmail.com","Prassu@123");
+	  }
+	  
+	  @And ("User clicks on the Login button")
+	  public void ClickLogin() {
+		  login.ClickLoginbtn();
+	  }
+	  
+	  
+	  
+	  @Then ("User should be logged in successfully")
+	  public void ProfilePageAppear() {
+		  profile.ProfilePageAppear();
+	  }
+	  
+	  @And("User clicks on the User Profile button")
+	  public void ClickingProfile() {
+		  profile.ClickViewProfile();
+	  }
+	  @And("User should land on the resume page")
+	  public void ResumeUpdatePage() {
+		  
+	  }
+	  And User clicks on the update resume button
+	  And User selects resume file from "./Prasanth_Resume.pdf"
+	  Then User should see resume updated with today’s date
+	  And User clicks on More options
+	  And User clicks on Logout button
+	  Then User should be logged out successfully
+	
+	
+}
