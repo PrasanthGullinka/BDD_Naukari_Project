@@ -1,0 +1,19 @@
+# Ignore compiled Java classes
+*.class
+
+# Maven build folder
+/target/
+
+# Logs
+*.log
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# VSCode settings
+.vscode/
+
+# OS junk files
+.DS_Store
+Thumbs.db
